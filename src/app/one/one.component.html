@@ -1,4 +1,27 @@
+<button class="btn" (click)="generarTarjeta()">AGREGAR TARJETAS</button>
 
-<div class="container">
-    <p>{{n}}</p> 
+<div *ngFor="let datos of misDatos">
+    <div *ngFor="let x of datos">
+        <div class="container" id="s">
+            <input [(ngModel)]="x.id" #identificador style="display: none;"><br> <!-- esta linea es para extraer el valor de x.id -->
+               <p> 
+                Titulo: {{x.titulo}}<br>
+                Nivel Educativo: {{x.nivelEducativo}}<br>
+                Institucion: {{x.institucion}}<br><br>
+                <button class="btn" (click)="borrarTarjeta(identificador.value)">BORRAR ESTA TARJETA</button><!-- se le pasa por parametro identificador.value, identificador es el #identificador que uso en el input de arriba.-->
+            </p>
+        </div>
+    </div>
+</div>
+
+<div *ngFor="let Educacion of Educaciones">
+    <div class="container">
+        <p>Titulo: {{ed[0]}}<br>
+            Nivel Educativo: {{ed[1]}}<br>
+            Institucion: {{ed[2]}}<br>
+            <input [(ngModel)]="ed[0]"><br>
+            <input [(ngModel)]="ed[1]"><br>
+            <input [(ngModel)]="ed[2]"><br><br>
+            <button class="btn" (click)="enviar()">Guardar Tarjeta</button></p>
+    </div>
 </div>

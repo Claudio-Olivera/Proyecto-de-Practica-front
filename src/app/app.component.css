@@ -4,21 +4,3 @@ h1{
     text-transform: uppercase;
     text-align: center;
 }
-.btn{
-    display: flex;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    font-family: 'Poppins', sans-serif;
-    text-transform: uppercase;
-    background: none;
-    color: rgb(0, 0, 0);
-    background-color: #fd9a9a;
-    padding: 15px;
-    border: 1px solid #fa4141;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.btn:hover{
-    background-color: #fa3a3a;
-    color: aliceblue;
-}
