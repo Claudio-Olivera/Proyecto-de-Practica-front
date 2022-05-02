@@ -1,18 +1,49 @@
 <button class="btn" (click)="generarTarjeta()">AGREGAR TARJETAS</button>
 
-<div *ngFor="let datos of misDatos">
-    <div *ngFor="let x of datos">
-        <div class="container" id="s">
+<div *ngFor="let listas of misDatos">
+  <div *ngFor="let x of listas">
+    <!-- modal para la edicion de tarjeta -->
+    <div  class="modal fade" id="EducacionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar Datos Personales</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <p class="form-control" 
+                  >id
+                  <input class="form-control" type="text" [(ngModel)]="varsa.id" 
+                  >
+                  
+                  Escribe el titulo obtenido <input class="form-control" type="text" [(ngModel)]="varsa.titulo" #uno >Escribe el nivel/tipo educativo<input class="form-control" type="text" [(ngModel)]="varsa.nivelEducativo" #dos >Detalle/Institucion<textarea class="form-control" rows="4" [(ngModel)]="varsa.institucion" #tres ></textarea></p> 
+                  <div class="container-fluid">
+              </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success" (click)="editarTarjeta()">Enviar</button>
+                <button type="button" class="btn btn-danger" (click)="borrarTarjeta()">Borrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- fin de modal e inicio de generador de tarjeta nueva -->
+        <div class="container" >
             <input [(ngModel)]="x.id" #identificador style="display: none;"><br> <!-- esta linea es para extraer el valor de x.id -->
-               <p> 
+               <p>
+                Id:{{x.id}}<br>     
                 Titulo: {{x.titulo}}<br>
                 Nivel Educativo: {{x.nivelEducativo}}<br>
                 Institucion: {{x.institucion}}<br><br>
-                <button class="btn" (click)="borrarTarjeta(identificador.value)">BORRAR ESTA TARJETA</button><!-- se le pasa por parametro identificador.value, identificador es el #identificador que uso en el input de arriba.-->
+            <!--     <button class="btn" (click)="borrarTarjeta(identificador.value)">BORRAR ESTA TARJETA</button>
+                se le pasa por parametro identificador.value, identificador es el #identificador que uso en el input de arriba.--> 
+            
+                <a class=" btn btn-outline-light  hover__boton"  role="button" data-bs-target="#EducacionModal" data-bs-toggle="modal"  (click)="editar(identificador.value, x.titulo,x.nivelEducativo,x.institucion)">editar esta tarjeta</a>
             </p>
         </div>
     </div>
 </div>
+        
 
 <div *ngFor="let Educacion of Educaciones">
     <div class="container">
@@ -24,4 +55,8 @@
             <input [(ngModel)]="ed[2]"><br><br>
             <button class="btn" (click)="enviar()">Guardar Tarjeta</button></p>
     </div>
+
+
+
+
 </div>

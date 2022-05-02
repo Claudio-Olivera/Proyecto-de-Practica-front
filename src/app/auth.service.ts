@@ -26,4 +26,14 @@ export class AuthService {
       return this.http.delete(this.url+"borrarEducacion/"+id)
     }
 
+    editarDatos(arr:edu, id:any):Observable<any>{
+      return this.http.put(this.url+ "modEducacion/"+id, arr)
+    }
+
+}
+export interface edu {
+  id : number;
+  titulo:string;
+  nivelEducativo: String;
+  institucion:String;
 }
